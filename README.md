@@ -101,13 +101,13 @@ Now that we have created our basic setup lets focus on building a directive that
 
 Notice a directive is a really a function that is returning an object, and on this object we are adding some very specific keys that are specific to directives, we just need to take advantage of them. Thinking about our needs in creating a spinner we are going to restrict our directive to an attribute.
 
-We are also going to use isolate scope to ensure that our code is modular however we are going to want our directive to have access to the controller that it is used in. For example if we look at this example where we are sending a request to Itunes and returning an array of songs we are going to want to still call the function getSongs() when this button is clicked. To do this we need to pass in some keys to our scope object.
+We are also going to use isolate scope to ensure that our code is modular. However, we are going to want our directive to have access to the controller that it is used in. For example if we look at this example where we are sending a request to iTunes and returning an array of songs we are going to want to still call the function `getSongs()` when this button is clicked. To do this we need to pass in some keys to our scope object.
 
 ````html
 	<button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
 ````
 
-What we need is a way to grab the function that is being called with ng-click. We will do this by setting up a key in our scope object called request: Now because we are wanting to run the function directly as it is called from our controller we are going to set request: '&' This may look funny but we are letting angular handle the complexities of going to the $parent scope and getting the function that we want to call. Now we will modify our html a bit to handle this change.
+What we need is a way to grab the function that is being called with ng-click. We will do this by setting up a key in our scope object called request: Now because we are wanting to run the function directly as it is called from our controller we are going to set request: '&' in our scope. The ampersand may look funny, but we are letting angular handle the complexities of going to the $parent scope and getting the function that we want to call. Now we will modify our html a bit to handle this change.
 
 ````html
 	<button class="btn btn-primary" pending request="getSongData()"> Submit </button>
@@ -118,7 +118,7 @@ Notice that we have removed ng-click because it is no longer necessary as we wil
 Now go ahead and setup the link block. This link block is very important when it comes to creating useful directives. It is through the link function that we ge access to three very important things the first is scope. 
 
 #####A note about scope
-When we talk about scope we are often refering to what block of code we are currently residing in and it is through scope that we have access to our variables and functions. What is important to understand when working with directives is that we often want to make sure we have an isolated scope so we know that our directive can be modular and not dependent upon a function or variable inside of a parent scope. The directive needs to hold all of its own functionality. This concept is not to be confused with being unable to use or take in functions or variables from a controller or parent scope and manipulate them. Think about ng-repeat="item in list" this is a directive that is taking in a $scope.variable called list and iterating through each item in that array therefore it must have access to the controller where $scope.list is defined. 
+When we talk about scope we are often referring to what block of code we are currently residing in and it is through scope that we have access to our variables and functions. What is important to understand when working with directives is that we often want to make sure we have an isolated scope so we know that our directive can be modular and not dependent upon a function or variable inside of a parent scope. The directive needs to hold all of its own functionality. This concept is not to be confused with being unable to use or take in functions or variables from a controller or parent scope and manipulate them. Think about ng-repeat="item in list". ng-repeat is a directive that is taking in a $scope variable called list and iterating through each item in that array therefore it must have access to the controller where $scope.list is defined. 
 
 Using scope appropriately and understanding how far down a scope tree you are can be confusing and difficult so it is okay to struggle with this concept. 
 
@@ -142,15 +142,15 @@ Inside our link block we can write the code necessary to show our pending spinne
 + remember scope.request === to the function on the controller.
 + Don't let your controller function start until the "element" is "clicked"
 + Make sure your controller function is returning itself and its promise.
-+ This will be difficult don't give up. Tackle one problem at a time.
++ This will be difficult, don't give up. Tackle one problem at a time.
 
 ###Step 3
 
 ####Notify Directive
 
-Now that you have a super cool directive that you can drop in anytime you need to make a call to a server lets make another directive that will be just as reusable as the last. Make sure you look up Html5 Notifications. They are built into most modern browsers and can therefore be very helpful for notifying us when an event occurs. Think of DevQueue wouldn't it be nice if Mentors got a small notification whenever a student enters the Queue? With this directive we should be able to accomplish that task fairly easily. 
+Now that you have a super cool directive that you can drop in anytime you need to make a call to a server lets make another directive that will be just as reusable as the last. Make sure you look up Html5 Notifications. They are built into most modern browsers and can therefore be very helpful for notifying us when an event occurs. Think of DevQueue; wouldn't it be nice if Mentors got a small notification whenever a student enters the Queue? With this directive we should be able to accomplish that task fairly easily. 
 
-Go ahead and setup a brand new directive and lets call it 'notify'. The setup here will be alot like our pending directive however the link function will be what changes. Follow the same process as before and then put this in as a freebie at the top of your link function. Although most modern browsers have built in notifications and they pretty much all function the same way they are not stored in the same location on the window so we are going to setup a simple or statement that will help make sure we are using the correct notification for each browser. Because it would be annoying for any site to give you popup notifications without your consent users have to grant permission to receive notifications. This permission is saved as a cookie so it will remember the setting each time you go to the site. Because it uses Cookies make sure you use something like http-server when testing. 
+Go ahead and setup a brand new directive and lets call it 'notify'. The setup here will be a lot like our pending directive, however the link function will be what changes. Follow the same process as before and then put this in as a freebie at the top of your link function. Although most modern browsers have built in notifications and they pretty much all function the same way they are not stored in the same location on the window so we are going to setup a simple or statement that will help make sure we are using the correct notification for each browser. Because it would be annoying for any site to give you popup notifications without your consent users have to grant permission to receive notifications. This permission is saved as a cookie so it will remember the setting each time you go to the site. Because it uses Cookies make sure you use something like http-server when testing. 
 
 ````javascript
 	var Notification = window.Notification || window.mozNotification || window.webkitNotification;
@@ -163,7 +163,7 @@ Moving right along if you look console.log(Notification) you would see that in e
 *Hints
 
 + Utilize scope {title: '=', body: '=', icon: '='}
-+ Remember to setup your Html with the correct naming conventions
++ Remember to setup your HTML with the correct naming conventions
 + Create a function that can be called on elem.click()
 + Use a callback in elem.click() to pass your params to the Notification Constructor
 + Again This will be difficult don't give up. Tackle one problem at a time. Use your resources.
