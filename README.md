@@ -75,14 +75,14 @@ You are familiar with creating controllers, factories, and services already and 
 ````
 
 ####Dont get tripped up.
-Despite looking just like a controller or a service there are a few things to be cautious of when working with directives. The first is naming conventions. Remember that Javascript conventions say we should use camelCase while Html conventions state that we should use snake-case. Angular trying to keep with best practices holds true to these conventions so whatever you name your directive here will later be called in your Html using snake-case
+Despite looking just like a controller or a service there are a few things to be cautious of when working with directives. The first is naming conventions. Remember that Javascript conventions say we should use camelCase while HTML conventions state that we should use snake-case. Angular trying to keep with best practices holds true to these conventions so whatever you name your directive here will later be called in your HTML using snake-case
 
 ````html
   ex. <div camel-case></div>
   ex. <div ng-view></div>
 ````
 
-Angular handles the conversion of your naming process itself so you don't have to worry about it, however if you didn't know it was happening you would have a very hard time debugging your code.  
+Angular handles the conversion of your naming process itself so you don't have to worry about it, however if you didn't know it was happening you might have a very hard time debugging your code.  
 
 ###Step 2
 
