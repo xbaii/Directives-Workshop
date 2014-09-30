@@ -61,7 +61,7 @@ If you dig through the angular documentation and as you become more familiar wit
 
 ####Step 1
 
-We are now going to embrace the modularity of angular and create our first reusable module. This means that the custom directive that you write here will be easy to reuse in all of your projects by simply injecting your module into your apps dependencies. To get started lets create a new and setup our angular module. 
+We are now going to embrace the modularity of angular and create our first reusable module. This means that the custom directive that you write here will be easy to reuse in all of your projects by simply injecting your module into your apps dependencies. To get started lets create a new project and setup our angular module. 
 
 <i>myDirectives.js</i>
 
