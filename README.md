@@ -86,7 +86,7 @@ Angular handles the conversion of your naming process itself so you don't have t
 
 ###Step 2
 
-####pending Directive
+####Create "pending" Directive
 Now that we have created our basic setup lets focus on building a directive that we can put on a <button></button> element that will show a loading gif while we wait for our data from an $http request. Lets create a new directive on our app and lets give it the name 'pending'. We then will setup the basic anatomy of a directive.
 
 ````javascript
@@ -131,7 +131,7 @@ Next we pass in element, or elem. This is the actual DOM element where we added 
 ````
 Inside our link block we can write the code necessary to show our pending spinner while we are fetching data from our server. Try console.log(scope, elem, attrs) to get a good look at the things you have available to you. There are many ways to accomplish this next task so play with a few things to try and get it right. 
 
-*Hints
+####Steps to complete the "pending" directive
 
 + Hide, disable, or change the text of the submit button
 + Show a spinning icon or gif while we wait for our data
@@ -146,7 +146,7 @@ Inside our link block we can write the code necessary to show our pending spinne
 
 ###Step 3
 
-####Notify Directive
+####Create Notify Directive
 
 Now that you have a super cool directive that you can drop in anytime you need to make a call to a server lets make another directive that will be just as reusable as the last. Make sure you look up Html5 Notifications. They are built into most modern browsers and can therefore be very helpful for notifying us when an event occurs. Think of DevQueue; wouldn't it be nice if Mentors got a small notification whenever a student enters the Queue? With this directive we should be able to accomplish that task fairly easily. 
 
@@ -160,7 +160,7 @@ Go ahead and setup a brand new directive and lets call it 'notify'. The setup he
 ````
 Moving right along if you look console.log(Notification) you would see that in each of these browsers Notification is a constructor. Remember in Js constructors use an initial capital letter. This means that for each notification we will be creating an 'new Notification()' instance. This constructor is setup to take in two parameters a string for its title and then an object with the rest of its properties. (title, {body: '', icon: ''}). Practice getting these notifications to work first with some hard coded values, then think about what you have learned to pass in variables that are on $scope from your controller. 
 
-*Hints
+####Steps to complete the "Notify" directive
 
 + Utilize scope {title: '=', body: '=', icon: '='}
 + Remember to setup your HTML with the correct naming conventions
